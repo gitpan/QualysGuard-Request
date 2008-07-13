@@ -3,13 +3,13 @@ package QualysGuard::Request;
 use warnings;
 use strict;
 
-use Qualys::Response;
+use QualysGuard::Response;
 use LWP::UserAgent;
 use HTTP::Request;
 use URI::Escape;
 use Carp;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 my $QUALYS_FUNCTIONS        = {
     'asset_data_report'     => 1,
@@ -298,7 +298,7 @@ Version 0.01
         'domain'  => 'example.com', 
     });
 
-    # - qualys_response is a Qualys::Response::MapReportList object
+    # - qualys_response is a QualysGuard::Response::MapReportList object
 
     my $qualys_response = $qualys_request->submit();
 
@@ -306,8 +306,8 @@ Version 0.01
         die $qualys_response->get_error(); 
     }
 
-    # - Qualys::Response is a subclass of XML::XPath which allows
-    # - XML::XPath functionality in each of the Qualys::Response subclasses.
+    # - QualysGuard::Response is a subclass of XML::XPath which allows
+    # - XML::XPath functionality in each of the QualysGuard::Response subclasses.
     # - In short you can extract data using the XML::XPath interface.
 
     my @map_refs = $qualys_response->findnodes('/SOME/XPATH/');
@@ -394,7 +394,7 @@ by QualysGuard::Request.
 
 =item new ( QUALYS_FUNCTION )
 
-Returns a new C<Qualys::Request> object. 
+Returns a new C<QualysGuard::Request> object. 
 
 =item attributes ( $QUALYS_FUNCTION_ARGS )
 

@@ -1,5 +1,13 @@
 Revision history for QualysGuard::Request
 
-0.01    2008-07-09 12:50 PM
-        First version, released on an unsuspecting world.
+
+0.02    2008-07-12 07:29 PM PST
+
+Bug Fixes
+        * Fix typeos in object namespace
+        * Added LICENSE attribute to Makefile.PL
+
+
+0.01    2008-07-09 12:50 PM PST
+        * First version, released on an unsuspecting world.
 

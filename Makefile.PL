@@ -9,6 +9,7 @@ WriteMakefile(
     VERSION_FROM        => 'lib/QualysGuard/Request.pm',
     ABSTRACT_FROM       => 'lib/QualysGuard/Request.pm',
     PL_FILES            => {},
+    LICENSE             => 'perl',
     PREREQ_PM => {
         'Test::More'        => 0.78,
         'LWP::UserAgent'    => 2.036,
