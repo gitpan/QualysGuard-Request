@@ -11,10 +11,12 @@ lib/QualysGuard/Response/AssetHostList.pm
 lib/QualysGuard/Response/AssetRangeInfo.pm
 lib/QualysGuard/Response/AssetSearchReport.pm
 lib/QualysGuard/Response/GenericReturn.pm
+lib/QualysGuard/Response/HostInfo.pm
 lib/QualysGuard/Response/IScannerList.pm
 lib/QualysGuard/Response/MapReport.pm
 lib/QualysGuard/Response/MapReport2.pm
 lib/QualysGuard/Response/MapReportList.pm
+lib/QualysGuard/Response/RemediationTickets.pm
 lib/QualysGuard/Response/ReportTemplateList.pm
 lib/QualysGuard/Response/ScanOptions.pm
 lib/QualysGuard/Response/ScanReport.pm
@@ -27,5 +29,8 @@ lib/QualysGuard/Response/TicketEdit.pm
 lib/QualysGuard/Response/TicketList.pm
 lib/QualysGuard/Response/TicketListDeleted.pm
 t/00-load.t
+t/01-asset_host_list.t
+t/02-ticket_list.t
+t/boilerplate.t
 t/pod.t
 META.yml                                 Module meta-data (added by MakeMaker)

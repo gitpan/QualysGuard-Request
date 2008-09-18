@@ -1,12 +1,11 @@
-package QualysGuard::Response::MapReportList;
+package QualysGuard::Response::RemediationTickets;
 
 use warnings;
 use strict;
 
 use base qw( QualysGuard::Response );
-use Scalar::Util qw( reftype );
 
-our $VERSION = '0.02';
+our $VERSION = '0.01';
 
 
 # =============================================================
@@ -21,49 +20,14 @@ sub new {
 
     # -- check for QualysGuard function error
 
-    if ( $self->exists('/MAP_REPORT_LIST/ERROR') ) { 
-        $self->{error_code} = $self->findvalue('/MAP_REPORT_LIST/ERROR/@number');
-        $self->{error_text} = $self->getNodeText('/MAP_REPORT_LIST/ERROR');
+    if ( $self->exists('/REMEDIATION_TICKETS/ERROR') ) { 
+        $self->{error_code} = $self->findvalue('/REMEDIATION_TICKETS/ERROR/@number');
+        $self->{error_text} = $self->getNodeText('/REMEDIATION_TICKETS/ERROR');
         $self->{error_text} =~ s/^\s+(.*)\s+$/$1/m;
     }   
 
     return $self;
 }
-
-
-
-# =============================================================
-# - get_map_refs
-# =============================================================
-sub get_map_refs {
-    my $self    = shift;
-    my @nodes   = $self->findnodes('/MAP_REPORT_LIST/MAP_REPORT');
-    my $rv      = {}; 
-
-    foreach my $node ( @nodes ) { 
-        my $key = $node->getAttribute( 'domain' );
-        my $val = $node->getAttribute( 'ref' );
-
-        if ( exists $rv->{$key} ) { 
-
-            if ( reftype( \$rv->{$key} ) eq 'SCALAR' ) { 
-                $rv->{$key} = [ $rv->{$key} ];
-                push( @{$rv->{$key}}, $val );
-            }   
-
-            elsif ( reftype( $rv->{$key} ) eq 'ARRAY' ) { 
-                push( @{$rv->{$key}}, $val );
-            }   
-        }   
-
-        else {
-            $rv->{$key} = $val;
-        }   
-    }   
-
-    return $rv;
-}
-
 
 
 1;
@@ -73,11 +37,11 @@ __END__
 
 =head1 NAME
 
-QualysGuard::Response::MapReportList 
+QualysGuard::Response::RemediationTickets
 
 =head1 VERSION
 
-Version 0.02
+Version 0.01
 
 =head1 SYNOPSIS
 
@@ -89,16 +53,6 @@ see L<QualysGuard::Request> for more information.
 This module is a subclass of QualysGuard::Response and XML::XPath.
 
 see QualysGuard API documentation for more information.
-
-=head1 PUBLIC INTERFACE
-
-=over 4
-
-=item get_map_refs
-
-Returns an hashref of domains and associated map refereces
-
-=back
 
 
 =head1 AUTHOR

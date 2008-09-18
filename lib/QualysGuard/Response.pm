@@ -7,7 +7,7 @@ use base qw( XML::XPath );
 use IO::File;
 use Carp;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 
@@ -41,13 +41,24 @@ sub new {
 }
 
 
-
 # -------------------------------------------------------------------
 #   is_error
 # -------------------------------------------------------------------
 sub is_error {
     my $self = shift;
     return ( defined $self->{error_code} ) ? 1 : 0;
+}
+
+
+
+# -------------------------------------------------------------------
+#   error_code
+# -------------------------------------------------------------------
+sub error_code {
+    my $self = shift;
+    if ( $self->is_error() ) {
+        return $self->{error_code};
+    }
 }
 
 
@@ -94,7 +105,7 @@ QualysGuard::Response - subclass of XML::XPath used to handle QualysGuard API XM
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 
@@ -138,6 +149,9 @@ shared across all QualysGuard::Response subclasses. I<Don't use this class direc
 
 Returns a I<1> or I<0> based on the results of the requested QualysGuard function.
 
+=item error_code
+
+Returns the I<native> QualysGuard API error code.
 
 =item get_error
 

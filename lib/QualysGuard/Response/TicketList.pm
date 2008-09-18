@@ -5,7 +5,7 @@ use strict;
 
 use base qw( QualysGuard::Response );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 # =============================================================
@@ -30,6 +30,32 @@ sub new {
 }
 
 
+# =============================================================
+# - is_truncated
+# =============================================================
+sub is_truncated {
+    my $self = shift;
+    return ( $self->exists('/REMEDIATION_TICKETS/TRUNCATION') ) ? 1 : 0;
+}
+
+
+
+# =============================================================
+# - get_last_ticket_number
+# =============================================================
+sub get_last_ticket_number {
+    my $self = shift;
+    if ( $self->is_truncated() ) {
+        if ( $self->exists('/REMEDIATION_TICKETS/TRUNCATION/@last') ) {
+            return $self->findvalue('/REMEDIATION_TICKETS/TRUNCATION/@last');
+        }
+    }
+
+    return undef;
+}
+
+
+
 1;
 
 __END__
@@ -41,7 +67,7 @@ QualysGuard::Response::TicketList
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 
@@ -54,6 +80,21 @@ This module is a subclass of QualysGuard::Response and XML::XPath.
 
 see QualysGuard API documentation for more information.
 
+=head1 PUBLIC INTERFACE
+
+=over 4
+
+=item is_tuncated
+
+Returns a I<1> or I<0> based on if the results have been truncated at 1000 tickets.
+ 
+=item get_last_ticket_number
+ 
+Returns the last ticket number included in the ticket list report or undef if report is not truncated.
+ 
+see QualysGuard API documentation for more information.
+
+=back
 
 =head1 AUTHOR
 

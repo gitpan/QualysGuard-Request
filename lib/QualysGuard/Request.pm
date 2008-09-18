@@ -9,7 +9,7 @@ use HTTP::Request;
 use URI::Escape;
 use Carp;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 my $QUALYS_FUNCTIONS        = {
     'asset_data_report'     => 1,
@@ -22,6 +22,8 @@ my $QUALYS_FUNCTIONS        = {
     'asset_ip_list'         => 1,
     'asset_range_info'      => 1,
     'asset_search'          => 1,
+    'get_host_info'         => 1,
+    'get_tickets'           => 1,
     'iscanner_list'         => 1,
     'map'                   => 1,
     'map-2'                 => 1,
@@ -189,6 +191,16 @@ sub _get_qualys_response_from {
         $qualys_return = QualysGuard::Response::AssetSearchReport->new( $xml_content );
     }
 
+    elsif ( $function eq 'get_host_info' ) {
+        require QualysGuard::Response::HostInfo;
+        $qualys_return = QualysGuard::Response::HostInfo->new( $xml_content );
+    }
+
+    elsif ( $function eq 'get_tickets' ) {
+        require QualysGuard::Response::RemediationTickets;
+        $qualys_return = QualysGuard::Response::RemediationTickets->new( $xml_content );
+    }
+
     elsif ( $function eq 'iscanner_list' ) {
         require QualysGuard::Response::IScannerList;
         $qualys_return = QualysGuard::Response::IScannerList->new( $xml_content );
@@ -280,7 +292,7 @@ QualysGuard::Request - Simple interface to QualysGuard API
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 =head1 SYNOPSIS
 
@@ -346,6 +358,10 @@ by QualysGuard::Request.
 =item asset_range_info          QualysGuard::Response::AssetRangeInfo
 
 =item asset_search              QualysGuard::Response::AssetSearchReport
+
+=item get_host_info             QualysGuard::Response::HostInfo
+
+=item get_tickets               QualysGuard::Response::RemediationTickets
 
 =item iscanner_list             QualysGuard::Response::IScannerList
 
@@ -468,4 +484,3 @@ This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 Qualys and the QualysGuard product are registered trademarks of Qualys, Inc.
-

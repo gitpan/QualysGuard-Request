@@ -5,7 +5,7 @@ use strict;
 
 use base qw( QualysGuard::Response );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 
@@ -33,9 +33,9 @@ sub new {
 
 
 # =============================================================
-# - extract_ip_address_list
+# - get_ip_address_list
 # =============================================================
-sub extract_ip_address_list {
+sub get_ip_address_list {
     my $self    = shift;
     my @nodes   = $self->findnodes('/MAP/IP');
     my @rv      = (); 
@@ -60,7 +60,7 @@ QualysGuard::Response::MapReport
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 
@@ -78,7 +78,7 @@ see QualysGuard API documentation for more information.
 
 =over 4
 
-=item extract_ip_address_list
+=item get_ip_address_list
 
 Returns an arrayref of the @value attribute for each /MAP/IP node.
 

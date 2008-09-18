@@ -1,6 +1,20 @@
 Revision history for QualysGuard::Request
 
 
+0.03    2008-09-17 10:30 PM PST
+
+Enhancements
+        * Changed extract_ip_address_list to get_ip_address_list in MapReport.pm 
+        * Changed extract_ip_address_list to get_ip_address_list in MapReport2.pm
+        * Changed extract_map_refs to get_map_refs in MapReportList.pm
+        * Added get_ip_list to AssetHostList.pm
+        * Added error_code method to Response.pm
+        * Added HostInfo.pm for the get_host_info QualysGuard function
+        * Added RemediationTickets.pm for the get_tickets QualysGuard function
+        * Added is_truncated to TicketList.pm
+        * Added get_last_ticket_number to TicketList.pm
+
+
 0.02    2008-07-12 07:29 PM PST
 
 Bug Fixes

@@ -1,6 +1,6 @@
 #!perl -T
 
-use Test::More tests => 24;
+use Test::More tests => 26;
 
 BEGIN {
 	use_ok( 'QualysGuard::Request' );
@@ -12,10 +12,12 @@ BEGIN {
 	use_ok( 'QualysGuard::Response::AssetRangeInfo' );
 	use_ok( 'QualysGuard::Response::AssetSearchReport' );
 	use_ok( 'QualysGuard::Response::GenericReturn' );
+	use_ok( 'QualysGuard::Response::HostInfo' );
 	use_ok( 'QualysGuard::Response::IScannerList' );
 	use_ok( 'QualysGuard::Response::MapReport' );
 	use_ok( 'QualysGuard::Response::MapReport2' );
 	use_ok( 'QualysGuard::Response::MapReportList' );
+	use_ok( 'QualysGuard::Response::RemediationTickets' );
 	use_ok( 'QualysGuard::Response::ReportTemplateList' );
 	use_ok( 'QualysGuard::Response::ScanOptions' );
 	use_ok( 'QualysGuard::Response::ScanReport' );
