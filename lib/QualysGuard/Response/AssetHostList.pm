@@ -5,7 +5,7 @@ use strict;
 
 use base qw( QualysGuard::Response );
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 # =============================================================
@@ -31,9 +31,9 @@ sub new {
 
 
 # -------------------------------------------------------------------
-# - get_ip_list
+# - get_ip_address_list
 # -------------------------------------------------------------------
-sub get_ip_list {
+sub get_ip_address_list {
     my $self = shift;
     my @nodes = $self->findnodes('/HOST_LIST/RESULTS/HOST/IP');
     my @rv = ();
@@ -58,7 +58,7 @@ QualysGuard::Response::AssetHostList
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =head1 SYNOPSIS
 
@@ -76,7 +76,7 @@ see QualysGuard API documentation for more information.
 
 =over 4
 
-=item get_ip_list
+=item get_ip_address_list
 
 Returns an arrayref of all /HOST_LIST/RESULTS/HOST/IP nodes.
 

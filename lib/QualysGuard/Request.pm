@@ -9,7 +9,7 @@ use HTTP::Request;
 use URI::Escape;
 use Carp;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 my $QUALYS_FUNCTIONS        = {
     'asset_data_report'     => 1,
@@ -292,7 +292,7 @@ QualysGuard::Request - Simple interface to QualysGuard API
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =head1 SYNOPSIS
 

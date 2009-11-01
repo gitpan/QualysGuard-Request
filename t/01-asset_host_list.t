@@ -18,7 +18,7 @@ isa_ok($qr, 'XML::XPath');
 isa_ok($qr, 'QualysGuard::Response');
 isa_ok($qr, 'QualysGuard::Response::AssetHostList');
 
-my $ip  = $qr->get_ip_list();
+my $ip  = $qr->get_ip_address_list();
 
 if ( $ip->[0] eq '192.168.1.10' &&
      $ip->[1] eq '192.168.1.20' &&

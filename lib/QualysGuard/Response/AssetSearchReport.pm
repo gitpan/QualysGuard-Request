@@ -5,7 +5,7 @@ use strict;
 
 use base qw( QualysGuard::Response );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 # =============================================================
@@ -28,6 +28,24 @@ sub new {
 
     return $self;
 }
+    
+    
+    
+# =============================================================
+# - get_ip_address_list
+# =============================================================
+sub get_ip_address_list {
+    my $self    = shift;
+    my @nodes   = $self->findnodes('/ASSET_SEARCH_REPORT/HOST_LIST/HOST/IP');
+    my @rv      = ();
+
+    foreach my $node ( @nodes ) {
+        push( @rv, $node->string_value() );
+    }
+
+    return \@rv;
+}
+
 
 
 1;
@@ -41,7 +59,7 @@ QualysGuard::Response::AssetSearchReport
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 
@@ -54,6 +72,18 @@ This module is a subclass of QualysGuard::Response and XML::XPath.
 
 see QualysGuard API documentation for more information.
 
+
+=head1 PUBLIC INTERFACE
+
+=over 4
+
+=item get_ip_address_list
+
+Returns an arrayref of the @value attribute for each /MAP_REQUEST/MAP/IP node.
+
+see QualysGuard API documentation for more information.
+
+=back
 
 =head1 AUTHOR
 

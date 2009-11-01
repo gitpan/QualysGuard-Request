@@ -3,11 +3,6 @@ package QualysGuard::Response::AssetGroupList;
 use strict;
 use warnings;
 
-#use XML::XPath::XMLParser;
-#use XML::Simple;
-#use Net::IP;
-
-
 use base qw( QualysGuard::Response );
 
 our $VERSION = '0.01';
